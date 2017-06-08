@@ -13,8 +13,14 @@ class GenusController extends Controller {
    * @Route("/genus/{genusName}")
    */
   public function showAction($genusName) {
+    $funFact = 'Octopuses can change the color of their body in just *three-tenths* of a second!';
+    
+    $funFact = $this->get('markdown.parser')
+      ->transform($funFact);
+    
     return $this->render('genus/show.html.twig', array(
       'name' => $genusName,
+      'funFact' => $funFact  
     ));
   }
 
